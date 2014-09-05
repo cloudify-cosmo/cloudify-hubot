@@ -43,13 +43,13 @@ If you're running on AWS, set the following variables as well:
 To load the machine locally, run:
 
 ```shell
-vagrant up local
+vagrant up hubot_vbox
 ```
 
 To load the machine in aws, run:
 
 ```shell
-vagrant up amazon
+vagrant up hubot_aws --provider=aws
 ```
 
 
