@@ -1,44 +1,16 @@
-# update local cache
-sudo apt-get update
+# # verify https
+# [ -e /usr/lib/apt/methods/https ] || {
+#   apt-get update
+#   apt-get install -y apt-transport-https
+# }
 
-# install 3rd party dependencies
-sudo apt-get install -y python-software-properties vim git make gcc
+# # add key
+# sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+# # add docker repo
+# sudo sh -c "echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+# # install docker
+# sudo apt-get update
+# sudo apt-get install -y lxc-docker
+# curl -sSL https://get.docker.io/ubuntu/ | sudo sh
 
-# install nodejs
-sudo add-apt-repository -y ppa:chris-lea/node.js
-sudo apt-get update
-sudo apt-get install -y nodejs
-
-# installl hubot
-sudo npm install -g hubot coffee-script
-
-# create bot
-hubot --create cloudify-hubot
-
-# install bot dependencies
-cd cloudify-hubot
-npm install
-
-# CONFIG PLUGINS
-# apply flowdock hubot config
-export HUBOT_FLOWDOCK_LOGIN_EMAIL="..."
-export HUBOT_FLOWDOCK_LOGIN_PASSWORD="..."
-# config announce
-export HUBOT_ANNOUNCE_ROOMS="comma separated list of rooms"
-# config deploy
-export HUBOT_DEPLOY_ROOM="room to deploy to"
-# config dnsimple
-export DNSIMPLE_USERNAME="..."
-export DNSIMPLE_PASSWORD="..."
-# config github plugins
-export  HUBOT_GITHUB_TOKEN
-export  HUBOT_GITHUB_USER
-export  HUBOT_GITHUB_API
-export HUBOT_GITHUB_ORG
-# config hangout
-export HUBOT_HANGOUT_URL
-# config keepalive
-export HUBOT_KEEP_ALIVE_FREQUENCY
-
-# run bot
-bin/hubot --name bot -a flowdock
+sudo docker run -d nir0s/cloudify-hubot /bin/sh -c "export HUBOT_FLOWDOCK_LOGIN_EMAIL="$1" && export HUBOT_FLOWDOCK_LOGIN_PASSWORD="$2" && cd /cloudify-hubot && bin/hubot --name bot -a flowdock"
