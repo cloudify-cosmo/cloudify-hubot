@@ -1,3 +1,60 @@
+
+
+# Cloudify's Hubot
+
+This repository contains Cloudify's configuration of Github's Hubot along with a Dockerfile to build the container which runs Hubot and a Vagrant file to load Hubot in Virtualbox and AWS.
+
+## Building the container
+
+To build the container, you must have docker installed.
+
+From the Vagrant folder run
+
+```shell
+sudo docker build dockerhub_user/dockerhub_repo .
+```
+
+Then push the container by running:
+
+```shell
+sudo docker push dockerhub_user/ducker_hub_repo
+```
+
+You must be logged in to dockerhub to push to the repo.
+
+## Running the container
+
+To load the machine and run the container
+
+### Setup the environment variables
+
+You must set the following environment variables in the machine you're running vagrant on:
+
+- HUBOT_FLOWDOCK_LOGIN_EMAIL
+- HUBOT_FLOWDOCK_LOGIN_PASSWORD
+
+If you're running on AWS, set the following variables as well:
+
+- AWS_ACCESS_KEY_ID
+- AWS_ACCESS_KEY
+
+### Load the machine
+
+To load the machine locally, run:
+
+```shell
+vagrant up local
+```
+
+To load the machine in aws, run:
+
+```shell
+vagrant up amazon
+```
+
+
+From Github:
+
 # Hubot
 
 This is a version of GitHub's Campfire bot, hubot. He's pretty cool.
