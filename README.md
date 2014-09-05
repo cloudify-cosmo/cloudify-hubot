@@ -30,6 +30,7 @@ To load the machine and run the container
 
 You must set the following environment variables in the machine you're running vagrant on:
 
+- HUBOT_CONTAINER_REPO - The Docker Hub repo to download the container from (e.g nir0s/cloudify-hubot)
 - HUBOT_FLOWDOCK_LOGIN_EMAIL
 - HUBOT_FLOWDOCK_LOGIN_PASSWORD
 
