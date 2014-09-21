@@ -61,19 +61,17 @@ When supplying the HUBOT_CONTAINER_REPO, you can use something like nir0s/cloudi
 sudo docker run -d --name hubot $HUBOT_CONTAINER_REPO /bin/sh -c "export HUBOT_FLOWDOCK_LOGIN_EMAIL=\"$HUBOT_FLOWDOCK_LOGIN_EMAIL\" && export HUBOT_FLOWDOCK_LOGIN_PASSWORD=\"$HUBOT_FLOWDOCK_LOGIN_PASSWORD\" && cd /cloudify-hubot && bin/hubot --name localtestbot -a flowdock"
 ```
 
-### Run the container insde a vm
+### Run the container inside a vm
+
+**Note: When loading the AWS machine, the default bot name is "bot". When loading the VBOX machine, the default name is "testbot". These are setup in advance. You can change the defaults there by changing the TEST_BOT_NAME and BOT_NAME variables in the Vagrantfile.**
 
 #### AWS
-
-**Note: When loading the AWS machine, the default bot name is "bot"**
 
 ```shell
 vagrant up hubot_aws --provider=aws
 ```
 
 #### VBOX - for testing purposes
-
-**Note: When loading the local machine, the default bot name is "testbot"**
 
 ```shell
 vagrant up hubot_vbox
