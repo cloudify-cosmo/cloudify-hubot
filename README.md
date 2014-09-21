@@ -6,15 +6,15 @@ This repository contains Cloudify's configuration of Github's Hubot along with a
 
 ## Prereqs:
 
-For building the container - docker
-For running the bot in AWS - vagrant and vagrant aws plugin
-For running the bot in virtualbox -  vagrant and... guess!
+- For building the container - docker
+- For running the bot in AWS - vagrant and vagrant aws plugin
+- For running the bot in virtualbox -  vagrant and... guess!
 
 ## Building the container
 
 To build the container, you must have docker installed.
 
-NOTE: Don't forget to push your changes to Github before building since the build process clones this repo.
+**Note: Don't forget to push your changes to Github before building since the build process clones this repo.**
 
 From the Vagrant folder run:
 
@@ -24,7 +24,7 @@ sudo docker build -t dockerhub_user/ducker_hub_repo .
 
 Then push the container by running:
 
-NOTE: You must be logged in to dockerhub to push to the repo.
+**Note: You must be logged in to Docker Hub to push to the repo.**
 
 ```shell
 sudo docker push dockerhub_user/ducker_hub_repo
@@ -53,27 +53,27 @@ If you're running on AWS, set the following variables as well:
 When supplying the HUBOT_CONTAINER_REPO, you can use something like nir0s/cloudify-hubot:TAG, where tag is the tag you've given the docker image when you created it. This can aid in testing. After building your image, push it with a specific tag (e.g "test" or "dev", etc) and when you run the container/vm, set the HUBOT_CONTAINER_REPO env var to use the tag you've created. When you're done, you can push the image without a tag to overwrite "latest".
 
 
-### Run the container locally:
+### Run the container locally
 
-NOTE: change "localtestbot" to the name you want to give the bot
+**Note: change "localtestbot" to the name you want to give the bot**
 
 ```shell
 sudo docker run -d --name hubot $HUBOT_CONTAINER_REPO /bin/sh -c "export HUBOT_FLOWDOCK_LOGIN_EMAIL=\"$HUBOT_FLOWDOCK_LOGIN_EMAIL\" && export HUBOT_FLOWDOCK_LOGIN_PASSWORD=\"$HUBOT_FLOWDOCK_LOGIN_PASSWORD\" && cd /cloudify-hubot && bin/hubot --name localtestbot -a flowdock"
 ```
 
-### Run the container a vm
+### Run the container insde a vm
 
 #### AWS
 
-NOTE: When loading the AWS machine, the default bot name is "bot"
+**Note: When loading the AWS machine, the default bot name is "bot"**
 
 ```shell
 vagrant up hubot_aws --provider=aws
 ```
 
-### VBOX - for testing purposes
+#### VBOX - for testing purposes
 
-NOTE: When loading the local machine, the default bot name is "testbot"
+**Note: When loading the local machine, the default bot name is "testbot"**
 
 ```shell
 vagrant up hubot_vbox
