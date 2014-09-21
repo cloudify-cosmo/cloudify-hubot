@@ -22,6 +22,8 @@ AWS_ACCESS_KEY = ENV['AWS_ACCESS_KEY']
 HUBOT_CONTAINER_REPO = ENV['HUBOT_CONTAINER_REPO']
 HUBOT_FLOWDOCK_LOGIN_EMAIL = ENV['HUBOT_FLOWDOCK_LOGIN_EMAIL']
 HUBOT_FLOWDOCK_LOGIN_PASSWORD = ENV['HUBOT_FLOWDOCK_LOGIN_PASSWORD']
+TEST_BOT_NAME = 'testbot'
+BOT_NAME = 'bot'
 
 BASE_BOX_NAME = 'ubuntu/trusty64'
 
@@ -30,7 +32,7 @@ Vagrant.configure('2') do |config|
   config.vm.define "hubot_aws" do |hubot_aws|
     #dummy box, will be overriden
     hubot_aws.vm.box = "dummy"
-    hubot_aws.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
+    # hubot_aws.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
 
     hubot_aws.vm.provider :aws do |aws, override|
       aws.access_key_id = AWS_ACCESS_KEY_ID
@@ -55,7 +57,7 @@ Vagrant.configure('2') do |config|
     hubot_aws.vm.synced_folder "../", "/cloudify-hubot", create: true
     hubot_aws.vm.provision "shell" do |s|
       s.path = "provision.sh"
-      s.args = "#{HUBOT_CONTAINER_REPO} #{HUBOT_FLOWDOCK_LOGIN_EMAIL} #{HUBOT_FLOWDOCK_LOGIN_PASSWORD}"
+      s.args = "#{HUBOT_CONTAINER_REPO} #{HUBOT_FLOWDOCK_LOGIN_EMAIL} #{HUBOT_FLOWDOCK_LOGIN_PASSWORD} #{BOT_NAME}"
       s.privileged = false
     end
   end
@@ -69,7 +71,7 @@ Vagrant.configure('2') do |config|
     hubot_vbox.vm.synced_folder "../", "/cloudify-hubot", create: true
     hubot_vbox.vm.provision "shell" do |s|
       s.path = "provision.sh"
-      s.args = "#{HUBOT_CONTAINER_REPO} #{HUBOT_FLOWDOCK_LOGIN_EMAIL} #{HUBOT_FLOWDOCK_LOGIN_PASSWORD}"
+      s.args = "#{HUBOT_CONTAINER_REPO} #{HUBOT_FLOWDOCK_LOGIN_EMAIL} #{HUBOT_FLOWDOCK_LOGIN_PASSWORD} #{TEST_BOT_NAME}"
       s.privileged = false
     end
   end

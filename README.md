@@ -4,14 +4,20 @@
 
 This repository contains Cloudify's configuration of Github's Hubot along with a Dockerfile to build the container which runs Hubot and a Vagrant file to load Hubot in Virtualbox and AWS.
 
+## Prereqs:
+
+For building the container - docker
+For running the bot in AWS - vagrant and vagrant aws plugin
+For running the bot locally -  vagrant and virtualbox
+
 ## Building the container
 
 To build the container, you must have docker installed.
 
-From the Vagrant folder run
+From the Vagrant folder run:
 
 ```shell
-sudo docker build dockerhub_user/dockerhub_repo .
+sudo docker build -t dockerhub_user/ducker_hub_repo .
 ```
 
 Then push the container by running:
@@ -20,7 +26,7 @@ Then push the container by running:
 sudo docker push dockerhub_user/ducker_hub_repo
 ```
 
-You must be logged in to dockerhub to push to the repo.
+NOTE: You must be logged in to dockerhub to push to the repo.
 
 ## Running the container
 
@@ -41,18 +47,21 @@ If you're running on AWS, set the following variables as well:
 
 ### Load the machine
 
-To load the machine locally, run:
-
-```shell
-vagrant up hubot_vbox
-```
-
 To load the machine in aws, run:
 
 ```shell
 vagrant up hubot_aws --provider=aws
 ```
+NOTE: When loading the AWS machine, the default bot name is "bot"
 
+### Testing
+
+To load the machine locally, run:
+
+```shell
+vagrant up hubot_vbox
+```
+NOTE: When loading the local machine, the default bot name is "testbot"
 
 From Github:
 

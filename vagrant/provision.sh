@@ -18,7 +18,8 @@ echo "********************************************"
 echo "HUBOT_CONTAINER_REPO is: $1"
 echo "HUBOT_FLOWDOCK_LOGIN_EMAIL is: $2"
 echo "HUBOT_FLOWDOCK_LOGIN_PASSWORD is: $3"
+echo "BOT_NAME: $4"
 echo "********************************************"
 
 # run container
-sudo docker run -d --name hubot $1 /bin/sh -c "export HUBOT_FLOWDOCK_LOGIN_EMAIL=\"$2\" && export HUBOT_FLOWDOCK_LOGIN_PASSWORD=\"$3\" && cd /cloudify-hubot && bin/hubot --name bot -a flowdock"
+sudo docker run -d --name hubot $1 /bin/sh -c "export HUBOT_FLOWDOCK_LOGIN_EMAIL=\"$2\" && export HUBOT_FLOWDOCK_LOGIN_PASSWORD=\"$3\" && cd /cloudify-hubot && bin/hubot --name $4 -a flowdock"
