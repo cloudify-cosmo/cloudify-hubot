@@ -47,6 +47,12 @@ If you're running on AWS, set the following variables as well:
 - AWS_ACCESS_KEY_ID
 - AWS_ACCESS_KEY
 
+
+#### Testing
+
+When supplying the HUBOT_CONTAINER_REPO, you can use something like nir0s/cloudify-hubot:TAG, where tag is the tag you've given the docker image when you created it. This can aid in testing. After building your image, push it with a specific tag (e.g "test" or "dev", etc) and when you run the container/vm, set the HUBOT_CONTAINER_REPO env var to use the tag you've created. When you're done, you can push the image without a tag to overwrite "latest".
+
+
 ### Run the container locally:
 
 NOTE: change "localtestbot" to the name you want to give the bot
@@ -72,7 +78,6 @@ NOTE: When loading the local machine, the default bot name is "testbot"
 ```shell
 vagrant up hubot_vbox
 ```
-
 
 
 
