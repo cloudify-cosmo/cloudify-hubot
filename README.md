@@ -8,11 +8,13 @@ This repository contains Cloudify's configuration of Github's Hubot along with a
 
 For building the container - docker
 For running the bot in AWS - vagrant and vagrant aws plugin
-For running the bot locally -  vagrant and virtualbox
+For running the bot in virtualbox -  vagrant and... guess!
 
 ## Building the container
 
 To build the container, you must have docker installed.
+
+NOTE: Don't forget to push your changes to Github before building since the build process clones this repo.
 
 From the Vagrant folder run:
 
@@ -22,19 +24,19 @@ sudo docker build -t dockerhub_user/ducker_hub_repo .
 
 Then push the container by running:
 
+NOTE: You must be logged in to dockerhub to push to the repo.
+
 ```shell
 sudo docker push dockerhub_user/ducker_hub_repo
 ```
 
-NOTE: You must be logged in to dockerhub to push to the repo.
-
 ## Running the container
 
-To load the machine and run the container
+To load the machine and run the container:
 
 ### Setup the environment variables
 
-You must set the following environment variables in the machine you're running vagrant on:
+You must set the following environment variables on your local machine:
 
 - HUBOT_CONTAINER_REPO - The Docker Hub repo to download the container from (e.g nir0s/cloudify-hubot)
 - HUBOT_FLOWDOCK_LOGIN_EMAIL
@@ -45,23 +47,34 @@ If you're running on AWS, set the following variables as well:
 - AWS_ACCESS_KEY_ID
 - AWS_ACCESS_KEY
 
-### Load the machine
+### Run the container locally:
 
-To load the machine in aws, run:
+NOTE: change "localtestbot" to the name you want to give the bot
+
+```shell
+sudo docker run -d --name hubot $HUBOT_CONTAINER_REPO /bin/sh -c "export HUBOT_FLOWDOCK_LOGIN_EMAIL=\"$HUBOT_FLOWDOCK_LOGIN_EMAIL\" && export HUBOT_FLOWDOCK_LOGIN_PASSWORD=\"$HUBOT_FLOWDOCK_LOGIN_PASSWORD\" && cd /cloudify-hubot && bin/hubot --name localtestbot -a flowdock"
+```
+
+### Run the container a vm
+
+#### AWS
+
+NOTE: When loading the AWS machine, the default bot name is "bot"
 
 ```shell
 vagrant up hubot_aws --provider=aws
 ```
-NOTE: When loading the AWS machine, the default bot name is "bot"
 
-### Testing
+### VBOX - for testing purposes
 
-To load the machine locally, run:
+NOTE: When loading the local machine, the default bot name is "testbot"
 
 ```shell
 vagrant up hubot_vbox
 ```
-NOTE: When loading the local machine, the default bot name is "testbot"
+
+
+
 
 From Github:
 
