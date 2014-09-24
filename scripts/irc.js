@@ -3,7 +3,7 @@ var flowdock = require('flowdock');
 var async = require('async')
 
 var fdFlowId = '080cded7-aeea-446f-a1bb-5f5e09e66f54';
-var fdApiKey = 'e8d8b40d1fd10cc3d33b76108456c920';
+var fdApiKey = process.env.FLOWDOCK_API_KEY
 var ircChannel = '#cloudify_test';
 var ircServer = 'irc.freenode.com';
 var relayUser = 'cosmo-admin';
@@ -47,17 +47,26 @@ relayClient = new irc.Client(ircServer, relayUser, {
     channels: [ircChannel],
 });
 
-// relayClient.whois('nir0s')
+relayClient.addListener('error', function(message) {
+    console.log('error: ', message);
+    fds.message(fdFlowId, 'CHANNEL_ERROR: ' + JSON.stringify(message), ['irc_channel_error'])
+});
 
 relayClient.addListener('message', function (from, to, message) {
     console.log('(' + to + ') ' + from + ': ' + message);
-    fds.message(fdFlowId, '(' + to + ') ' + from + ': ' + message, []);
+    if (message.indexOf(ircChannel) < 0) {
+        fds.message(fdFlowId, '(' + to + ') ' + from + ': ' + message, []);
+    }
 });
 
 stream = fds.stream(fdFlowId);
 stream.on('message', function(message) {
     console.log('flowdock: ' + JSON.stringify(message, undefined, 2));
     if (message.event == 'message' && message.content.indexOf(ircChannel) < 0) {
-        clients[message.user].say(ircChannel, message.content);
+        if (message.user in clients) {
+            clients[message.user].say(ircChannel, message.content);
+        } else {
+            relayClient.say(ircChannel, message.content)
+        }
     };
 });
