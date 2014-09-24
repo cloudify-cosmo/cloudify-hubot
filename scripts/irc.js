@@ -8,10 +8,10 @@ var ircChannel = '#cloudify_test';
 var ircServer = 'irc.freenode.com';
 var relayUser = 'cosmo-admin';
 
-var fds = new flowdock.Session(fdApiKey);
-
 var fdUsers = {};
 var clients = {};
+
+var fds = new flowdock.Session(fdApiKey);
 
 
 async.waterfall(
@@ -47,6 +47,8 @@ relayClient = new irc.Client(ircServer, relayUser, {
     channels: [ircChannel],
 });
 
+// relayClient.whois('nir0s')
+
 relayClient.addListener('message', function (from, to, message) {
     console.log('(' + to + ') ' + from + ': ' + message);
     fds.message(fdFlowId, '(' + to + ') ' + from + ': ' + message, []);
@@ -56,6 +58,6 @@ stream = fds.stream(fdFlowId);
 stream.on('message', function(message) {
     console.log('flowdock: ' + JSON.stringify(message, undefined, 2));
     if (message.event == 'message' && message.content.indexOf(ircChannel) < 0) {
-        relayClient.say(ircChannel, fdUsers[message.user] + ': ' + message.content);
+        clients[message.user].say(ircChannel, message.content);
     };
 });
