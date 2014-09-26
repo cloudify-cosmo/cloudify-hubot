@@ -24,25 +24,3 @@ RUN npm install -g hubot coffee-script
 RUN git clone https://github.com/cloudify-cosmo/cloudify-hubot && \
     cd cloudify-hubot && \
     npm install
-
-# CONFIG PLUGINS
-# apply flowdock hubot config
-# config announce
-# export HUBOT_ANNOUNCE_ROOMS="comma separated list of rooms"
-# # config deploy
-# export HUBOT_DEPLOY_ROOM="room to deploy to"
-# # config dnsimple
-# export DNSIMPLE_USERNAME="..."
-# export DNSIMPLE_PASSWORD="..."
-# # config github plugins
-# export  HUBOT_GITHUB_TOKEN
-# export  HUBOT_GITHUB_USER
-# export  HUBOT_GITHUB_API
-# export HUBOT_GITHUB_ORG
-# # config hangout
-# export HUBOT_HANGOUT_URL
-# # config keepalive
-# export HUBOT_KEEP_ALIVE_FREQUENCY
-
-# run bot
-# bin/hubot --name bot -a flowdock

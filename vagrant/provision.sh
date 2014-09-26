@@ -19,7 +19,12 @@ echo "HUBOT_CONTAINER_REPO is: $1"
 echo "HUBOT_FLOWDOCK_LOGIN_EMAIL is: $2"
 echo "HUBOT_FLOWDOCK_LOGIN_PASSWORD is: $3"
 echo "BOT_NAME: $4"
+echo "HUBOT_FLOWDOCK_IRC_API_TOKEN: $5"
+echo "HUBOT_FLOWDOCK_IRC_FLOWID is: $6"
+echo "HUBOT_FLOWDOCK_IRC_CHANNEL is: $7"
+echo "HUBOT_FLOWDOCK_IRC_SERVER is: $8"
+echo "HUBOT_FLOWDOCK_IRC_RELAY_CLIENT is: $9"
 echo "********************************************"
 
 # run container
-sudo docker run -d --name hubot $1 /bin/sh -c "export HUBOT_FLOWDOCK_LOGIN_EMAIL=\"$2\" && export HUBOT_FLOWDOCK_LOGIN_PASSWORD=\"$3\" && cd /cloudify-hubot && bin/hubot --name $4 -a flowdock"
+sudo docker run -d --name hubot $1 /bin/sh -c "export HUBOT_FLOWDOCK_LOGIN_EMAIL=\"$2\" && export HUBOT_FLOWDOCK_LOGIN_PASSWORD=\"$3\" && export HUBOT_FLOWDOCK_IRC_API_TOKEN=\"$5\" && export HUBOT_FLOWDOCK_IRC_FLOWID=\"$6\" && export HUBOT_FLOWDOCK_IRC_CHANNEL=\"$7\" && export HUBOT_FLOWDOCK_IRC_SERVER=\"$8\" && export HUBOT_FLOWDOCK_IRC_RELAY_CLIENT=\"$9\" && cd /cloudify-hubot && bin/hubot --name $4 -a flowdock"
