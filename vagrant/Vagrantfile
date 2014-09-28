@@ -21,7 +21,6 @@ AWS_ACCESS_KEY = ENV['AWS_ACCESS_KEY']
 
 HUBOT_FLOWDOCK_LOGIN_EMAIL = ENV['HUBOT_FLOWDOCK_LOGIN_EMAIL']
 HUBOT_FLOWDOCK_LOGIN_PASSWORD = ENV['HUBOT_FLOWDOCK_LOGIN_PASSWORD']
-HUBOT_FLOWDOCK_IRC_API_TOKEN=ENV['HUBOT_FLOWDOCK_IRC_API_TOKEN']
 
 TEST_BOT_NAME = 'testbot'
 BOT_NAME = 'bot'
@@ -58,7 +57,7 @@ Vagrant.configure('2') do |config|
     hubot_aws.vm.synced_folder "../", "/cloudify-hubot", create: true
     hubot_aws.vm.provision "shell" do |s|
       s.path = "provision.sh"
-      s.args = "#{HUBOT_FLOWDOCK_LOGIN_EMAIL} #{HUBOT_FLOWDOCK_LOGIN_PASSWORD} #{HUBOT_FLOWDOCK_IRC_API_TOKEN} #{BOT_NAME}"
+      s.args = "#{HUBOT_FLOWDOCK_LOGIN_EMAIL} #{HUBOT_FLOWDOCK_LOGIN_PASSWORD} #{BOT_NAME}"
       s.privileged = false
     end
   end
@@ -72,7 +71,7 @@ Vagrant.configure('2') do |config|
     hubot_vbox.vm.synced_folder "../", "/cloudify-hubot", create: true
     hubot_vbox.vm.provision "shell" do |s|
       s.path = "provision.sh"
-      s.args = "#{HUBOT_FLOWDOCK_LOGIN_EMAIL} #{HUBOT_FLOWDOCK_LOGIN_PASSWORD} #{HUBOT_FLOWDOCK_IRC_API_TOKEN} #{TEST_BOT_NAME}"
+      s.args = "#{HUBOT_FLOWDOCK_LOGIN_EMAIL} #{HUBOT_FLOWDOCK_LOGIN_PASSWORD} #{TEST_BOT_NAME}"
       s.privileged = false
     end
   end

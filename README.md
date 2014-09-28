@@ -41,7 +41,6 @@ You must set the following environment variables on your local machine:
 - HUBOT_CONTAINER_REPO - The Docker Hub repo to download the container from (e.g nir0s/cloudify-hubot)
 - HUBOT_FLOWDOCK_LOGIN_EMAIL
 - HUBOT_FLOWDOCK_LOGIN_PASSWORD
-- HUBOT_FLOWDOCK_IRC_API_TOKEN (for the irc relay)
 
 If you're running on AWS, set the following variables as well:
 
