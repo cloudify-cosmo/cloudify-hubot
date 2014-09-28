@@ -13,18 +13,23 @@ sudo apt-get update
 sudo apt-get install -y lxc-docker
 curl -sSL https://get.docker.io/ubuntu/ | sudo sh
 
+HUBOT_CONTAINER_REPO='cosmoadmin/cloudify-hubot'
+HUBOT_FLOWDOCK_IRC_FLOWID='080cded7-aeea-446f-a1bb-5f5e09e66f54'
+HUBOT_FLOWDOCK_IRC_CHANNEL="#cloudify"
+HUBOT_FLOWDOCK_IRC_SERVER="irc.freenode.com"
+HUBOT_FLOWDOCK_IRC_RELAY_CLIENT="cosmo-admin"
 
 echo "********************************************"
-echo "HUBOT_CONTAINER_REPO is: $1"
-echo "HUBOT_FLOWDOCK_LOGIN_EMAIL is: $2"
-echo "HUBOT_FLOWDOCK_LOGIN_PASSWORD is: $3"
+echo "HUBOT_FLOWDOCK_LOGIN_EMAIL is: $1"
+echo "HUBOT_FLOWDOCK_LOGIN_PASSWORD is: $2"
+echo "HUBOT_FLOWDOCK_IRC_API_TOKEN: $3"
 echo "BOT_NAME: $4"
-echo "HUBOT_FLOWDOCK_IRC_API_TOKEN: $5"
-echo "HUBOT_FLOWDOCK_IRC_FLOWID is: $6"
-echo "HUBOT_FLOWDOCK_IRC_CHANNEL is: $7"
-echo "HUBOT_FLOWDOCK_IRC_SERVER is: $8"
-echo "HUBOT_FLOWDOCK_IRC_RELAY_CLIENT is: $9"
+echo "HUBOT_CONTAINER_REPO is: $HUBOT_CONTAINER_REPO"
+echo "HUBOT_FLOWDOCK_IRC_FLOWID is: $HUBOT_FLOWDOCK_IRC_FLOWID"
+echo "HUBOT_FLOWDOCK_IRC_CHANNEL is: $HUBOT_FLOWDOCK_IRC_CHANNEL"
+echo "HUBOT_FLOWDOCK_IRC_SERVER is: $HUBOT_FLOWDOCK_IRC_SERVER"
+echo "HUBOT_FLOWDOCK_IRC_RELAY_CLIENT is: $HUBOT_FLOWDOCK_IRC_RELAY_CLIENT"
 echo "********************************************"
 
 # run container
-sudo docker run -d --name hubot $1 /bin/sh -c "export HUBOT_FLOWDOCK_LOGIN_EMAIL=\"$2\" && export HUBOT_FLOWDOCK_LOGIN_PASSWORD=\"$3\" && export HUBOT_FLOWDOCK_IRC_API_TOKEN=\"$5\" && export HUBOT_FLOWDOCK_IRC_FLOWID=\"$6\" && export HUBOT_FLOWDOCK_IRC_CHANNEL=\"$7\" && export HUBOT_FLOWDOCK_IRC_SERVER=\"$8\" && export HUBOT_FLOWDOCK_IRC_RELAY_CLIENT=\"$9\" && cd /cloudify-hubot && bin/hubot --name $4 -a flowdock"
+sudo docker run -d --name hubot $HUBOT_CONTAINER_REPO /bin/sh -c "export HUBOT_FLOWDOCK_LOGIN_EMAIL=\"$1\" && export HUBOT_FLOWDOCK_LOGIN_PASSWORD=\"$2\" && export HUBOT_FLOWDOCK_IRC_API_TOKEN=\"$3\" && export HUBOT_FLOWDOCK_IRC_FLOWID=\"$HUBOT_FLOWDOCK_IRC_FLOWID\" && export HUBOT_FLOWDOCK_IRC_CHANNEL=\"$HUBOT_FLOWDOCK_IRC_CHANNEL\" && export HUBOT_FLOWDOCK_IRC_SERVER=\"$HUBOT_FLOWDOCK_IRC_SERVER\" && export HUBOT_FLOWDOCK_IRC_RELAY_CLIENT=\"$HUBOT_FLOWDOCK_IRC_RELAY_CLIENT\" && cd /cloudify-hubot && bin/hubot --name $4 -a flowdock"
