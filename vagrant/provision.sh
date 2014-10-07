@@ -21,9 +21,8 @@ sudo git clone https://github.com/cloudify-cosmo/cloudify-hubot &&
 cd cloudify-hubot &&
 sudo npm install
 
-BOT_CONTAINER_REPO='cosmoadmin/cloudify-hubot'
 HUBOT_FLOWDOCK_IRC_FLOWID='080cded7-aeea-446f-a1bb-5f5e09e66f54'
-HUBOT_FLOWDOCK_IRC_CHANNEL='#cloudify'
+HUBOT_FLOWDOCK_IRC_CHANNEL='#cloudify_test'
 HUBOT_FLOWDOCK_IRC_SERVER='irc.freenode.com'
 HUBOT_FLOWDOCK_IRC_RELAY_CLIENT='cosmo-admin'
 
@@ -31,7 +30,6 @@ echo "********************************************"
 echo "HUBOT_FLOWDOCK_LOGIN_EMAIL is: $1"
 echo "HUBOT_FLOWDOCK_LOGIN_PASSWORD is: $2"
 echo "BOT_NAME: $3"
-echo "HUBOT_CONTAINER_REPO is: $HUBOT_CONTAINER_REPO"
 echo "HUBOT_FLOWDOCK_IRC_FLOWID is: $HUBOT_FLOWDOCK_IRC_FLOWID"
 echo "HUBOT_FLOWDOCK_IRC_CHANNEL is: $HUBOT_FLOWDOCK_IRC_CHANNEL"
 echo "HUBOT_FLOWDOCK_IRC_SERVER is: $HUBOT_FLOWDOCK_IRC_SERVER"
