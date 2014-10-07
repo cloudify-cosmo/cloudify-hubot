@@ -15,9 +15,9 @@ curl -sSL https://get.docker.io/ubuntu/ | sudo sh
 
 HUBOT_CONTAINER_REPO='cosmoadmin/cloudify-hubot'
 HUBOT_FLOWDOCK_IRC_FLOWID='080cded7-aeea-446f-a1bb-5f5e09e66f54'
-HUBOT_FLOWDOCK_IRC_CHANNEL="#cloudify"
-HUBOT_FLOWDOCK_IRC_SERVER="irc.freenode.com"
-HUBOT_FLOWDOCK_IRC_RELAY_CLIENT="cosmo-admin"
+HUBOT_FLOWDOCK_IRC_CHANNEL='#cloudify'
+HUBOT_FLOWDOCK_IRC_SERVER='irc.freenode.com'
+HUBOT_FLOWDOCK_IRC_RELAY_CLIENT='cosmo-admin'
 
 echo "********************************************"
 echo "HUBOT_FLOWDOCK_LOGIN_EMAIL is: $1"
@@ -31,4 +31,4 @@ echo "HUBOT_FLOWDOCK_IRC_RELAY_CLIENT is: $HUBOT_FLOWDOCK_IRC_RELAY_CLIENT"
 echo "********************************************"
 
 # run container
-sudo docker run -d --name hubot $HUBOT_CONTAINER_REPO /bin/sh -c "export HUBOT_FLOWDOCK_LOGIN_EMAIL=\"$1\" && export HUBOT_FLOWDOCK_LOGIN_PASSWORD=\"$2\" && export HUBOT_FLOWDOCK_IRC_FLOWID=$HUBOT_FLOWDOCK_IRC_FLOWID && export HUBOT_FLOWDOCK_IRC_CHANNEL=\"$HUBOT_FLOWDOCK_IRC_CHANNEL\" && export HUBOT_FLOWDOCK_IRC_SERVER=\"$HUBOT_FLOWDOCK_IRC_SERVER\" && export HUBOT_FLOWDOCK_IRC_RELAY_CLIENT=\"$HUBOT_FLOWDOCK_IRC_RELAY_CLIENT\" && cd /cloudify-hubot && bin/hubot --name $3 -a flowdock"
+sudo docker run -d --name hubot $HUBOT_CONTAINER_REPO /bin/sh -c "export HUBOT_FLOWDOCK_LOGIN_EMAIL=$1 && export HUBOT_FLOWDOCK_LOGIN_PASSWORD=$2 && export HUBOT_FLOWDOCK_IRC_FLOWID=$HUBOT_FLOWDOCK_IRC_FLOWID && export HUBOT_FLOWDOCK_IRC_CHANNEL=$HUBOT_FLOWDOCK_IRC_CHANNEL && export HUBOT_FLOWDOCK_IRC_SERVER=$HUBOT_FLOWDOCK_IRC_SERVER && export HUBOT_FLOWDOCK_IRC_RELAY_CLIENT=$HUBOT_FLOWDOCK_IRC_RELAY_CLIENT && cd /cloudify-hubot && bin/hubot --name $3 -a flowdock"
