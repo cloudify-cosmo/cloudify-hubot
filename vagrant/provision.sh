@@ -22,7 +22,7 @@ cd cloudify-hubot &&
 sudo npm install
 
 HUBOT_FLOWDOCK_IRC_FLOWID='080cded7-aeea-446f-a1bb-5f5e09e66f54'
-HUBOT_FLOWDOCK_IRC_CHANNEL='#cloudify_test'
+HUBOT_FLOWDOCK_IRC_CHANNEL='#cloudify'
 HUBOT_FLOWDOCK_IRC_SERVER='irc.freenode.com'
 HUBOT_FLOWDOCK_IRC_RELAY_CLIENT='cosmo-admin'
 
