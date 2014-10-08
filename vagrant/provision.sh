@@ -42,4 +42,5 @@ export HUBOT_FLOWDOCK_IRC_FLOWID=$HUBOT_FLOWDOCK_IRC_FLOWID &&
 export HUBOT_FLOWDOCK_IRC_CHANNEL=$HUBOT_FLOWDOCK_IRC_CHANNEL &&
 export HUBOT_FLOWDOCK_IRC_SERVER=$HUBOT_FLOWDOCK_IRC_SERVER &&
 export HUBOT_FLOWDOCK_IRC_RELAY_CLIENT=$HUBOT_FLOWDOCK_IRC_RELAY_CLIENT &&
-cd /cloudify-hubot && bin/hubot --name $3 -a flowdock
+cd /cloudify-hubot &&
+bin/hubot --name $3 -a flowdock
