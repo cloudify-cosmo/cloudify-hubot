@@ -11,10 +11,10 @@ This repository contains Cloudify's configuration of Github's Hubot based on a V
 
 the vagrant/provision.sh file contains the following configuration:
 
-HUBOT_FLOWDOCK_IRC_FLOWID='080cded7-aeea-446f-a1bb-5f5e09e66f54'
-HUBOT_FLOWDOCK_IRC_CHANNEL='#cloudify'
-HUBOT_FLOWDOCK_IRC_SERVER='irc.freenode.com'
-HUBOT_FLOWDOCK_IRC_RELAY_CLIENT='cosmo-admin'
+- HUBOT_FLOWDOCK_IRC_FLOWID='080cded7-aeea-446f-a1bb-5f5e09e66f54'
+- HUBOT_FLOWDOCK_IRC_CHANNEL='#cloudify'
+- HUBOT_FLOWDOCK_IRC_SERVER='irc.freenode.com'
+- HUBOT_FLOWDOCK_IRC_RELAY_CLIENT='cosmo-admin'
 
 You can change these if necessary.
 
