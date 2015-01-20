@@ -1,44 +1,31 @@
-
-
 # Cloudify's Hubot
 
-This repository contains Cloudify's configuration of Github's Hubot along with a Dockerfile to build the container which runs Hubot and a Vagrant file to load Hubot in Virtualbox and AWS.
+This repository contains Cloudify's configuration of Github's Hubot based on a Vagrantfile to load Hubot in Virtualbox and AWS.
 
 ## Prereqs:
 
-- For building the container - docker
 - For running the bot in AWS - vagrant and vagrant aws plugin
 - For running the bot in virtualbox -  vagrant and... guess!
 
-## Building the container
+## IRC-Flowdock Relay Configuration
 
-To build the container, you must have docker installed.
+the vagrant/provision.sh file contains the following configuration:
 
-**Note: Don't forget to push your changes to Github before building since the build process clones this repo.**
+- HUBOT_FLOWDOCK_IRC_FLOWID='080cded7-aeea-446f-a1bb-5f5e09e66f54'
+- HUBOT_FLOWDOCK_IRC_CHANNEL='#cloudify'
+- HUBOT_FLOWDOCK_IRC_SERVER='irc.freenode.com'
+- HUBOT_FLOWDOCK_IRC_RELAY_CLIENT='cosmo-admin'
 
-From the Vagrant folder run:
+You can change these if necessary.
 
-```shell
-sudo docker build -t dockerhub_user/ducker_hub_repo .
-```
+## Running Hubot
 
-Then push the container by running:
-
-**Note: You must be logged in to Docker Hub to push to the repo.**
-
-```shell
-sudo docker push dockerhub_user/ducker_hub_repo
-```
-
-## Running the container
-
-To load the machine and run the container:
+To load the machine and run hubot:
 
 ### Setup the environment variables
 
 You must set the following environment variables on your local machine:
 
-- HUBOT_CONTAINER_REPO - The Docker Hub repo to download the container from (e.g nir0s/cloudify-hubot)
 - HUBOT_FLOWDOCK_LOGIN_EMAIL
 - HUBOT_FLOWDOCK_LOGIN_PASSWORD
 
@@ -46,20 +33,6 @@ If you're running on AWS, set the following variables as well:
 
 - AWS_ACCESS_KEY_ID
 - AWS_ACCESS_KEY
-
-
-#### Testing
-
-When supplying the HUBOT_CONTAINER_REPO, you can use something like nir0s/cloudify-hubot:TAG, where tag is the tag you've given the docker image when you created it. This can aid in testing. After building your image, push it with a specific tag (e.g "test" or "dev", etc) and when you run the container/vm, set the HUBOT_CONTAINER_REPO env var to use the tag you've created. When you're done, you can push the image without a tag to overwrite "latest".
-
-
-### Run the container locally
-
-**Note: change "localtestbot" to the name you want to give the bot**
-
-```shell
-sudo docker run -d --name hubot $HUBOT_CONTAINER_REPO /bin/sh -c "export HUBOT_FLOWDOCK_LOGIN_EMAIL=\"$HUBOT_FLOWDOCK_LOGIN_EMAIL\" && export HUBOT_FLOWDOCK_LOGIN_PASSWORD=\"$HUBOT_FLOWDOCK_LOGIN_PASSWORD\" && cd /cloudify-hubot && bin/hubot --name localtestbot -a flowdock"
-```
 
 ### Run the container inside a vm
 
