@@ -27,9 +27,11 @@ export HUBOT_FLOWDOCK_IRC_FLOWID='080cded7-aeea-446f-a1bb-5f5e09e66f54'
 export HUBOT_FLOWDOCK_IRC_CHANNEL='#cloudify'
 export HUBOT_FLOWDOCK_IRC_SERVER='irc.freenode.com'
 export HUBOT_FLOWDOCK_IRC_RELAY_CLIENT='cosmo-admin'
-export HEARTBEAT_INTERVAL='86400000'
+export HEARTBEAT_INTERVAL='43200000'
 export HEARTBEAT_ENABLED='true'
 export HEARTBEAT_FLOWID='52e9744a-a699-4342-8aea-b33324583bbc'
+# TestBotZone FlowID for tests
+# export HEARTBEAT_FLOWID='ca831fe8-860c-45f8-ba34-2c2559b38d70'
 
 echo "********************************************"
 echo "HUBOT_FLOWDOCK_LOGIN_EMAIL is: $1"

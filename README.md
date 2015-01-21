@@ -11,12 +11,15 @@ This repository contains Cloudify's configuration of Github's Hubot based on a V
 
 the vagrant/provision.sh file contains the following configuration:
 
-- HUBOT_FLOWDOCK_IRC_FLOWID='080cded7-aeea-446f-a1bb-5f5e09e66f54'
-- HUBOT_FLOWDOCK_IRC_CHANNEL='#cloudify'
-- HUBOT_FLOWDOCK_IRC_SERVER='irc.freenode.com'
-- HUBOT_FLOWDOCK_IRC_RELAY_CLIENT='cosmo-admin'
-
+- HUBOT_FLOWDOCK_IRC_FLOWID=''
+- HUBOT_FLOWDOCK_IRC_CHANNEL=''
+- HUBOT_FLOWDOCK_IRC_SERVER=''
+- HUBOT_FLOWDOCK_IRC_RELAY_CLIENT=''
+- HEARTBEAT_INTERVAL=''
+- HEARTBEAT_ENABLED=''
+- HEARTBEAT_FLOWID=''
 You can change these if necessary.
+For more explanation on each ENV VAR, see [here](https://github.com/cloudify-cosmo/hubot-flowdock-irc-relay).
 
 ## Running Hubot
 
@@ -44,18 +47,32 @@ If you're running on AWS, set the following variables as well:
 vagrant up hubot_aws --provider=aws
 ```
 
-#### VBOX - for testing purposes
+#### Virtualbox - for testing purposes
 
 ```shell
-vagrant up hubot_vbox
+vagrant up
 ```
+
+## Upgrading Hubot
+
+For now, vagrant destroy and vagrant up must be run to replace hubot unless you wanna upgrade manually (which is kind of a drag). We'll eventually come up with an upgrade process.
 
 ## Writing New Scripts
 
 You can write scripts in either JS or CoffeeScript. You can use [this](http://js2coffee.org/) to convert from JS to Coffee and back.
 After you've written your script, put it under the `scripts` dir and add the name of the script to hubot-scripts.json.
 
-You can then [run hubot locally](VBOX - for testing purposes) and test that your script is working.
+You can then `vagrant up` and test that your script is working.
+
+Let the Ops (yes, Ops, not DevOps) team know that you're done so that the new code can be deployed in our Hubot server.
+
+## Testing that the bot is actually running
+
+By default, a heartbeat will be sent to the 'Cloudify3' flow stating that the Flowdock-IRC relay is up and running.
+You can also ping the bot by writing @BOTNAME ping. If everything is ok, it will return 'PONG'.
+
+
+
 
 
 From Github:
