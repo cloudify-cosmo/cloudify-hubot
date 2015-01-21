@@ -18,7 +18,9 @@ the vagrant/provision.sh file contains the following configuration:
 - HEARTBEAT_INTERVAL=''
 - HEARTBEAT_ENABLED=''
 - HEARTBEAT_FLOWID=''
+-
 You can change these if necessary.
+
 For more explanation on each ENV VAR, see [here](https://github.com/cloudify-cosmo/hubot-flowdock-irc-relay).
 
 ## Running Hubot
