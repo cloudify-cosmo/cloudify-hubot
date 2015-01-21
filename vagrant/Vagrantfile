@@ -29,7 +29,7 @@ BASE_BOX_NAME = 'ubuntu/trusty64'
 
 Vagrant.configure('2') do |config|
 
-  config.vm.define "hubot_aws" do |hubot_aws|
+  config.vm.define "hubot_aws", autostart: false do |hubot_aws|
     #dummy box, will be overriden
     hubot_aws.vm.box = "dummy"
     hubot_aws.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
@@ -62,7 +62,7 @@ Vagrant.configure('2') do |config|
     end
   end
 
-  config.vm.define :hubot_vbox do |hubot_vbox|
+  config.vm.define "hubot_vbox", primary: true do |hubot_vbox|
     hubot_vbox.vm.provider :virtualbox do |vb|
       vb.customize ['modifyvm', :id, '--memory', '1024']
     end

@@ -50,6 +50,12 @@ vagrant up hubot_aws --provider=aws
 vagrant up hubot_vbox
 ```
 
+## Writing New Scripts
+
+You can write scripts in either JS or CoffeeScript. You can use [this](http://js2coffee.org/) to convert from JS to Coffee and back.
+After you've written your script, put it under the `scripts` dir and add the name of the script to hubot-scripts.json.
+
+You can then [run hubot locally](VBOX - for testing purposes) and test that your script is working.
 
 
 From Github:
