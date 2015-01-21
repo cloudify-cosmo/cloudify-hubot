@@ -64,6 +64,8 @@ For now, vagrant destroy and vagrant up must be run to replace hubot unless you 
 You can write scripts in either JS or CoffeeScript. You can use [this](http://js2coffee.org/) to convert from JS to Coffee and back.
 After you've written your script, put it under the `scripts` dir and add the name of the script to hubot-scripts.json.
 
+NOTE: YOU DON'T HAVE TO CONVERT TO COFFEE! JS ALSO WORKS!
+
 You can then `vagrant up` and test that your script is working.
 
 Let the Ops (yes, Ops, not DevOps) team know that you're done so that the new code can be deployed in our Hubot server.
