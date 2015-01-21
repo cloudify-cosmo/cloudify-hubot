@@ -9,16 +9,16 @@ This repository contains Cloudify's configuration of Github's Hubot based on a V
 
 ## IRC-Flowdock Relay Configuration
 
-the vagrant/provision.sh file contains the following configuration:
+the vagrant/provision.sh file contains the following environment variables:
 
-- HUBOT_FLOWDOCK_IRC_FLOWID=''
-- HUBOT_FLOWDOCK_IRC_CHANNEL=''
-- HUBOT_FLOWDOCK_IRC_SERVER=''
-- HUBOT_FLOWDOCK_IRC_RELAY_CLIENT=''
-- HEARTBEAT_INTERVAL=''
-- HEARTBEAT_ENABLED=''
-- HEARTBEAT_FLOWID=''
--
+- HUBOT_FLOWDOCK_IRC_FLOWID
+- HUBOT_FLOWDOCK_IRC_CHANNEL
+- HUBOT_FLOWDOCK_IRC_SERVER
+- HUBOT_FLOWDOCK_IRC_RELAY_CLIENT
+- HEARTBEAT_INTERVAL
+- HEARTBEAT_ENABLED
+- HEARTBEAT_FLOWID
+
 You can change these if necessary.
 
 For more explanation on each ENV VAR, see [here](https://github.com/cloudify-cosmo/hubot-flowdock-irc-relay).
