@@ -39,7 +39,7 @@ If you're running on AWS, set the following variables as well:
 - AWS_ACCESS_KEY_ID
 - AWS_ACCESS_KEY
 
-### Run the container inside a vm
+### Running Hubot
 
 **Note: When loading the AWS machine, the default bot name is "bot". When loading the VBOX machine, the default name is "testbot". These are setup in advance. You can change the defaults there by changing the TEST_BOT_NAME and BOT_NAME variables in the Vagrantfile.**
 
