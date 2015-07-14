@@ -7,6 +7,7 @@ sudo apt-get install -y vim &&
 sudo apt-get install -y git &&
 sudo apt-get install -y make gcc g++ &&
 sudo apt-get install -y python python-dev
+sudo apt-get install -y dtach
 
 # install nodejs
 sudo apt-get install -y software-properties-common &&
@@ -20,6 +21,9 @@ sudo npm install -g hubot coffee-script
 sudo git clone https://github.com/cloudify-cosmo/cloudify-hubot &&
 cd cloudify-hubot &&
 sudo npm install
+sudo npm install lodash
+sudo npm install moment
+sudo npm install chrono-node
 
 export HUBOT_FLOWDOCK_LOGIN_EMAIL=$1
 export HUBOT_FLOWDOCK_LOGIN_PASSWORD=$2
@@ -46,5 +50,5 @@ echo "HUBOT_FLOWDOCK_IRC_RELAY_HEARTBEAT_ENABLED is: $HEARTBEAT_ENABLED"
 echo "HUBOT_FLOWDOCK_IRC_RELAY_HEARTBEAT_FLOWID is: $HEARTBEAT_FLOWID"
 echo "********************************************"
 
-cd /cloudify-hubot &&
 bin/hubot --name $3 -a flowdock
+# nohup bin/hubot --name $3 -a flowdock &

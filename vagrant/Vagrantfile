@@ -44,6 +44,7 @@ Vagrant.configure('2') do |config|
       aws.instance_type = "m1.small"
 
       aws.keypair_name = "vagrant_build"
+      override.nfs.functional = false
       override.ssh.username = "ubuntu"
       override.ssh.private_key_path = "~/.ssh/aws/vagrant_build.pem"
 
